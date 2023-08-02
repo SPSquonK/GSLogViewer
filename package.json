@@ -10,6 +10,13 @@
   "author": "SPSquonK <sp@sqk.fr>",
   "license": "MIT",
   "devDependencies": {
+    "@parcel/transformer-vue": "^2.9.3",
+    "@vue/language-plugin-pug": "^1.8.8",
     "parcel": "^2.9.3"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "pug": "^3.0.2",
+    "vue": "^3.3.4"
   }
 }
