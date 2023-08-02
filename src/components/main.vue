@@ -27,15 +27,40 @@ div(class="section")
     textarea
       | {{ content }}
 
+  div(class="container" v-if="dataTable")
+    div(class="table-container")
+      table(class="table is-bordered is-striped is-hoverable is-fullwidth")
+        thead
+          tr
+            th #
+            th Player
+            th Guild
+            th Points
+            th K/D
+            th Kills
+            th Death
+        tbody
+          tr(v-for="(player, i) in dataTable.players" v-bind:key="player.name")
+            td
+              span(v-if="i == 0 || dataTable.players[i - 1].totalPoints != player.totalPoints")
+                | {{ i + 1 }}
+            td {{ player.name }}
+            td {{ player.guild }}
+            td {{ player.totalPoints }}
+            td {{ player.kills.length }} / {{ player.death.length }}
+            td {{ player.kills.join(", ") }}
+            td {{ player.death.join(", ") }}
 </template>
 
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import * as GSInterpretation from "../GSInterpretation";
 
 type Data = {
   selectedFileName: string | null;
   content: string | null;
+  dataTable: GSInterpretation.Interpretation | null
 }
 
 export default defineComponent({
@@ -43,7 +68,8 @@ export default defineComponent({
   data(): Data {
     return {
       selectedFileName: null,
-      content: null
+      content: null,
+      dataTable: null
     };
   },
 
@@ -60,6 +86,8 @@ export default defineComponent({
       fileReader.addEventListener('load', () => {
         if (typeof fileReader.result == 'string') {
           this.content = fileReader.result;
+
+          this.dataTable = GSInterpretation.InterpretLog(this.content);
         } else {
           this.content = "ah bah c'est pas un string";
         }
