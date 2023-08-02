@@ -1,0 +1,15 @@
+{
+  "name": "@spsquonk/gs-log-viewer",
+  "version": "1.0.0",
+  "description": "Yet another guild siege log viewer",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx parcel serve src/index.html -p 12345",
+    "build": "npx parcel build src/index.html --dist-dir ../www-back/parcel --no-source-maps"
+  },
+  "author": "SPSquonK <sp@sqk.fr>",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel": "^2.9.3"
+  }
+}
