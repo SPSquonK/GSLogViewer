@@ -4,7 +4,7 @@
   "description": "Yet another guild siege log viewer",
   "scripts": {
     "dev": "npx parcel serve src/index.html -p 12345",
-    "build": "npx parcel build src/index.html --dist-dir ../dist --no-source-maps"
+    "build": "npx parcel build src/index.html --dist-dir dist --no-source-maps --public-url ."
   },
   "repository": {
     "type": "git",

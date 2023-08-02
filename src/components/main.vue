@@ -1,11 +1,11 @@
 
 <template lang="pug">
 div(class="section")
-  div(class="container")
+  div(class="container box")
     h1(class="title")
       | SquonK's Guild Siege Viewer
   
-  div(class="container")
+  div(class="container box")
     form
       div(class="file")
         label(class="file-label")
@@ -22,13 +22,9 @@ div(class="section")
               | Your guild siege log file
         span(v-if="selectedFileName" class="file-name")
           | {{ selectedFileName }}
-    
-  div(class="container" v-if="content")
-    textarea
-      | {{ content }}
 
-  div(class="container" v-if="dataTable")
-    div(class="table-container")
+
+    div(class="table-container" v-if="dataTable")
       table(class="table is-bordered is-striped is-hoverable is-fullwidth")
         thead
           tr
@@ -50,6 +46,12 @@ div(class="section")
             td {{ player.kills.length }} / {{ player.death.length }}
             td {{ player.kills.join(", ") }}
             td {{ player.death.join(", ") }}
+
+  div(class="container box")
+    div(class="content has-text-centered")
+      p
+        | Developed in 1 hour by SquonK.
+        | <a href="https://github.com/SPSquonK/GSLogViewer">Github repository</a>
 </template>
 
 
